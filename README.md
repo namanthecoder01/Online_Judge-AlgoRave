@@ -1,122 +1,104 @@
-# Online_Judge-AlgoRave
+# ONLINE_JUDGE-ALGORAVE
 
-<h1 align="center">⚡ AlgoRave – Online Judge Platform ⚡</h1>
+*Empowering Minds, Accelerating Innovation Through Coding Excellence*
 
-<p align="center">
-  <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" alt="PRs Welcome">
-  <img src="https://img.shields.io/github/license/namanthecoder01/Online_Judge-AlgoRave" alt="License">
-  <img src="https://img.shields.io/github/stars/namanthecoder01/Online_Judge-AlgoRave?style=social" alt="Stars">
-</p>
-
-<p align="center">
-  <b>A full-stack Online Judge built for learning, practicing, and competing.</b><br>
-  Level up your DSA skills through real-time coding challenges & auto-evaluation.
-</p>
+![GitHub last commit](https://img.shields.io/github/last-commit/namanthecoder01/Online_Judge-AlgoRave) ![GitHub top language](https://img.shields.io/github/languages/top/namanthecoder01/Online_Judge-AlgoRave) ![GitHub language count](https://img.shields.io/github/languages/count/namanthecoder01/Online_Judge-AlgoRave)
 
 ---
 
-## 📸 Demo
+## Built with the tools and technologies:
 
-> Coming soon!
-
----
-
-## 🚀 Features
-
-- ✨ Clean and intuitive user interface
-- 👤 User authentication with JWT
-- 🧠 Code submission and evaluation system
-- 📈 Track user submissions and history
-- 📊 Leaderboard and performance stats
-- ⚙️ Admin panel for adding problems (upcoming)
-
----
-
-## 🧱 Tech Stack
-
-| Frontend | Backend       | Database | Auth       |
-|----------|---------------|----------|------------|
-| React.js | Node.js/Express | MongoDB  | JWT + bcrypt |
+![Express](https://img.shields.io/badge/-Express-black?logo=express) 
+![JSON](https://img.shields.io/badge/-JSON-black?logo=json) 
+![Markdown](https://img.shields.io/badge/-Markdown-black?logo=markdown) 
+![npm](https://img.shields.io/badge/-npm-red?logo=npm) 
+![Mongoose](https://img.shields.io/badge/-Mongoose-cc0000?logo=mongoose) 
+![DotEnv](https://img.shields.io/badge/-.ENV-yellowgreen)
+![JavaScript](https://img.shields.io/badge/-JavaScript-yellow?logo=javascript) 
+![Nodemon](https://img.shields.io/badge/-Nodemon-green?logo=nodemon)
+![MongoDB](https://img.shields.io/badge/-MongoDB-green?logo=mongodb)
+![React](https://img.shields.io/badge/-React-00c8ff?logo=react)
+![Axios](https://img.shields.io/badge/-Axios-purple)
 
 ---
 
-## 📁 Project Structure
+## Table of Contents
 
-Online_Judge-AlgoRave/
-├── backend/ # Node.js Express API
-│ └── models, routes, controllers, config
-├── frontend/ # React.js client
-│ └── components, pages, assets
-├── .env.example # Sample environment variables
-└── README.md # You're here!
-
+- [Overview](#overview)
+- [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+  - [Usage](#usage)
+  - [Testing](#testing)
 
 ---
 
-## 🧑‍💻 Getting Started
+## Overview
 
-### 1. Clone the repository
+Online_Judge-AlgoRave is an all-in-one platform that empowers developers to build scalable online judge systems with ease. It combines a robust backend API with a React-based frontend, enabling real-time code evaluation, user authentication, and problem management.
 
-git clone https://github.com/namanthecoder01/Online_Judge-AlgoRave.git
+---
 
-cd Online_Judge-AlgoRave
+## Why Online_Judge-AlgoRave?
 
-### 2. Set up environment
+This project simplifies the creation of competitive programming platforms by providing essential features out-of-the-box:
 
-cp .env.example .env
+- 🎯 🧩 **Problem & Contest Management**: Organize and manage coding challenges efficiently.
+- 🚀 ⚙️ **Real-Time Submission & Evaluation**: Seamlessly submit code and receive instant feedback.
+- 🔒 🔑 **Secure Authentication**: Protect user data with JWT and MongoDB integration.
+- 🖥️ 🌐 **Intuitive React Interface**: Navigate effortlessly through problem sets, leaderboards, and user dashboards.
+- 📊 📈 **Activity & Leaderboard Tracking**: Foster engagement with real-time activity updates and rankings.
+- 🛠️ 🧩 **Modular Architecture**: Easily extend and customize for your specific needs.
 
-Fill in your MongoDB URI, JWT secret, and other details.
+---
 
-### 3. Run Backend
+## Getting Started
 
-cd backend
+### Prerequisites
 
-npm install
+This project requires the following dependencies:
 
-npm run dev
+- **Programming Language:** JavaScript  
+- **Package Manager:** Npm
 
-### 4. Run Frontend
+---
 
-cd ../frontend
+## 📦 Installation
 
-npm install
+Build **Online\_Judge-AlgoRave** from the source and install dependencies:
 
-npm start
+1. **Clone the repository**:
 
-### 🌍 Environment Variables
+   ```bash
+   git clone https://github.com/namantcoder01/Online_Judge-AlgoRave
+   ```
 
-See .env.example for configuration. You’ll need:
+2. **Navigate to the project directory**:
 
-PORT
+   ```bash
+   cd Online_Judge-AlgoRave
+   ```
 
-MONGODB_URI
+3. **Install the dependencies**:
 
-SECRET_KEY
+   ```bash
+   npm install
+   ```
 
-NODE_ENV
+4. **Usage**
+   Run the project with:
 
-### 📌 Todo
+   ```bash
+   npm start
+   ```
 
- Add problem difficulty levels
+5. **Testing**
+   Online\_Judge-AlgoRave uses the test framework. Run the test suite with:
 
- Code editor with syntax highlighting
+   ```bash
+   npm test
+   ```
 
- Add test cases support for each problem
+---
 
- Dockerize the project
-
- Deploy on Vercel/Render
-
-### 🤝 Contributing
-
-Contributions are welcome! Feel free to open issues or submit pull requests.
-
-Run npm run lint before pushing any code.
-
-📄 License
-
-This project is licensed under the MIT License.
-
-💬 Let’s Connect!
-
-Created with ❤️ by @namanthecoder01
+> 🙋‍♂️ *Made with* ❤️ *by [Naman Jain](https://github.com/namantcoder01)*
