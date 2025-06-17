@@ -1,0 +1,22 @@
+/* Reset default browser styles and set box-sizing */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Set up the body with a modern font and smooth rendering */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Main app container with a full-page background image */
+.App {
+  min-height: 100vh;
+  background: url('./Components/Assets/bg_img.jpg') no-repeat center center fixed;
+  background-size: cover;
+}

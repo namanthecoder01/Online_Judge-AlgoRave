@@ -1,0 +1,177 @@
+/* Reset & base styles */
+body, html, #root, .App {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+}
+
+/* Centering container */
+.auth-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Auth form card */
+.auth-form {
+    background: rgba(0, 0, 0, 0.72);
+    padding: 2rem;
+    border-radius: 16px;
+    max-width: 370px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.35);
+    border: 1.5px solid rgba(255,255,255,0.08);
+}
+
+/* Logo */
+.auth-form .logo img {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+}
+
+/* Titles and tagline */
+.oj-title {
+    font-family: monospace;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #fff;
+    margin-bottom: 0.3rem;
+    text-align: center;
+}
+
+.oj-tagline {
+    font-family: monospace;
+    color: #ccc;
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+/* Sub-heading */
+.auth-form h2 {
+    color: #fff;
+    font-size: 1.2rem;
+    margin-bottom: 1.2rem;
+    text-align: center;
+}
+
+/* Input styling */
+.form-group {
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.8rem;
+    font-size: 1rem;
+    border-radius: 8px;
+    border: 1.5px solid #333;
+    background: rgba(255,255,255,0.08);
+    color: #fff;
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+.form-group input:focus {
+    border-color: #a259ff;
+    background: rgba(255,255,255,0.15);
+    box-shadow: 0 0 0 2px #a259ff33;
+}
+
+.form-group input:disabled {
+    background-color: #222;
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+/* Submit button */
+.submit-btn {
+    width: 100%;
+    padding: 0.9rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: white;
+    background: linear-gradient(90deg, #a259ff, #6a82fb);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.submit-btn:hover:not(:disabled) {
+    background: linear-gradient(90deg, #6a82fb, #a259ff);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.18);
+}
+
+.submit-btn:disabled {
+    background: #444;
+    cursor: not-allowed;
+}
+
+/* Toggle login/register */
+.toggle-form {
+    margin-top: 1rem;
+    font-size: 0.95rem;
+    color: #bbb;
+    text-align: center;
+}
+
+.toggle-btn {
+    background: none;
+    border: none;
+    color: #a259ff;
+    font-weight: 600;
+    cursor: pointer;
+    margin-left: 0.5rem;
+}
+
+.toggle-btn:hover:not(:disabled) {
+    text-decoration: underline;
+    color: #6a82fb;
+}
+
+/* Message box */
+.message {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    border-radius: 6px;
+    text-align: center;
+    font-size: 0.95rem;
+    animation: fadeIn 0.3s ease;
+}
+
+/* Message types */
+.message.success {
+    background-color: #e6f9ed;
+    color: #1b7e3c;
+    border: 1px solid #b6e2c6;
+}
+
+.message.error {
+    background-color: #fbeaea;
+    color: #c82333;
+    border: 1px solid #f5c6cb;
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

@@ -1,0 +1,560 @@
+.home-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f5f5f5;
+    padding: 20px;
+}
+
+.home-content {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px;
+}
+
+.home-content h1 {
+    color: #333;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.user-info {
+    background-color: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+}
+
+.user-info h2 {
+    color: #444;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+.info-item {
+    display: flex;
+    margin-bottom: 0.8rem;
+    padding: 0.5rem;
+    border-bottom: 1px solid #eee;
+}
+
+.info-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.label {
+    font-weight: 600;
+    color: #666;
+    width: 80px;
+}
+
+.value {
+    color: #333;
+    flex: 1;
+}
+
+.logout-btn {
+    width: 100%;
+    padding: 0.8rem;
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.logout-btn:hover {
+    background-color: #c82333;
+}
+
+.loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-size: 1.2rem;
+    color: #666;
+}
+
+.oj-home-bg {
+    min-height: 100vh;
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+                url('./Assets/bg_img1.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: #fff;
+}
+
+.oj-navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.oj-nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.oj-nav-logo img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.oj-nav-logo span {
+    font-family: 'Fira Mono', monospace;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #fff;
+}
+
+.oj-dashboard {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.oj-welcome-banner {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.oj-welcome-icon {
+    font-size: 2.5rem;
+    background: linear-gradient(45deg, #a259ff, #6a82fb);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.oj-welcome-banner h1 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    color: #fff;
+}
+
+.oj-welcome-sub {
+    color: #ccc;
+    font-size: 1.1rem;
+}
+
+.oj-main-content {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 2rem;
+}
+
+.oj-profile-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    padding: 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.oj-profile-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.oj-profile-avatar {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(45deg, #a259ff, #6a82fb);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #fff;
+}
+
+.oj-profile-info {
+    flex: 1;
+}
+
+.oj-profile-name {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 0.3rem;
+}
+
+.oj-profile-email {
+    color: #ccc;
+    font-size: 0.9rem;
+}
+
+.oj-profile-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.oj-stat-item {
+    text-align: center;
+}
+
+.oj-stat-label {
+    display: block;
+    color: #ccc;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+.oj-stat-value {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #fff;
+}
+
+.oj-dashboard-sections {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.oj-section-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    padding: 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.oj-section-card h2 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: #fff;
+}
+
+.oj-placeholder {
+    color: #ccc;
+    text-align: center;
+    padding: 2rem 0;
+}
+
+.oj-logout-btn {
+    background: linear-gradient(45deg, #a259ff, #6a82fb);
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.oj-logout-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-size: 1.2rem;
+    color: #fff;
+}
+
+.oj-nav-links {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.oj-nav-btn {
+    background: transparent;
+    border: none;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+}
+
+.oj-nav-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.oj-nav-btn.active {
+    background: linear-gradient(45deg, #a259ff, #6a82fb);
+    color: #fff;
+}
+
+.oj-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.oj-quick-links {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    padding: 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.oj-quick-links h3 {
+    color: #fff;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+.oj-quick-link-btn {
+    display: block;
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 0.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: left;
+}
+
+.oj-quick-link-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.oj-content-area {
+    min-height: 600px;
+}
+
+.oj-problem-filters {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.oj-search-input,
+.oj-difficulty-select,
+.oj-language-select,
+.oj-time-select {
+    padding: 0.8rem;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.05);
+    color: #fff;
+    font-size: 1rem;
+}
+
+.oj-search-input {
+    flex: 1;
+}
+
+.oj-problems-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.oj-problem-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.oj-problem-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateX(5px);
+}
+
+.oj-problem-title {
+    flex: 1;
+    color: #fff;
+    font-weight: 500;
+}
+
+.oj-problem-difficulty {
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+}
+
+.oj-problem-difficulty.easy {
+    background: rgba(46, 213, 115, 0.2);
+    color: #2ed573;
+}
+
+.oj-problem-difficulty.medium {
+    background: rgba(255, 159, 67, 0.2);
+    color: #ff9f43;
+}
+
+.oj-problem-difficulty.hard {
+    background: rgba(255, 71, 87, 0.2);
+    color: #ff4757;
+}
+
+.oj-problem-solved {
+    color: #ccc;
+    font-size: 0.9rem;
+}
+
+.oj-compiler-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+.oj-code-editor {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.oj-code-textarea {
+    height: 400px;
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(0, 0, 0, 0.3);
+    color: #fff;
+    font-family: 'Fira Code', monospace;
+    font-size: 1rem;
+    resize: none;
+}
+
+.oj-test-cases {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.oj-input-textarea,
+.oj-output-textarea {
+    height: 150px;
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(0, 0, 0, 0.3);
+    color: #fff;
+    font-family: 'Fira Code', monospace;
+    font-size: 1rem;
+    resize: none;
+}
+
+.oj-run-btn {
+    padding: 1rem;
+    background: linear-gradient(45deg, #a259ff, #6a82fb);
+    border: none;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.oj-run-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(106, 130, 251, 0.4);
+}
+
+.oj-leaderboard-table {
+    margin-top: 1.5rem;
+}
+
+.oj-leaderboard-header {
+    display: grid;
+    grid-template-columns: 80px 1fr 120px 120px;
+    gap: 1rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px 8px 0 0;
+    font-weight: bold;
+    color: #fff;
+}
+
+.oj-contest-filters {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.oj-contest-filter {
+    padding: 0.8rem 1.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.oj-contest-filter:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.oj-contest-filter.active {
+    background: linear-gradient(45deg, #a259ff, #6a82fb);
+    border-color: transparent;
+}
+
+@media (max-width: 1024px) {
+    .oj-main-content {
+        grid-template-columns: 1fr;
+    }
+
+    .oj-sidebar {
+        display: none;
+    }
+
+    .oj-compiler-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .oj-nav-links {
+        display: none;
+    }
+
+    .oj-dashboard {
+        padding: 1rem;
+    }
+
+    .oj-welcome-banner {
+        padding: 1.5rem;
+    }
+
+    .oj-problem-filters {
+        flex-direction: column;
+    }
+} 
