@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  compiler-backend:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - PORT=8000
+      - GOOGLE_GEMINI_API=${GOOGLE_GEMINI_API}
+      - NODE_ENV=production
+    env_file:
+      - .env
+    volumes:
+      - ./outputs:/app/outputs
+      - ./codes:/app/codes 

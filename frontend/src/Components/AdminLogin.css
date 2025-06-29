@@ -1,0 +1,142 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: linear-gradient(135deg, #232526 0%, #414345 100%);
+  min-height: 100vh;
+  font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+}
+
+.admin-bg-container {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: url('Assets/bg_hack.jpg') no-repeat center center fixed;
+  background-size: cover;
+  background-color: #000;
+  margin: 0;
+  padding: 0;
+}
+
+.admin-login-card {
+  background: rgba(10, 10, 30, 0.92);
+  padding: 2.5rem 2rem 2rem 2rem;
+  border-radius: 18px;
+  max-width: 370px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  backdrop-filter: blur(14px);
+  box-shadow: 0 8px 32px rgba(0,255,0,0.12);
+  border: 1.5px solid rgba(0,255,0,0.18);
+}
+
+.admin-logo img {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 8px rgba(0,255,0,0.18);
+  border: 2px solid #00ff88;
+}
+
+.admin-title {
+  font-family: 'Fira Mono', 'Consolas', 'Courier New', monospace;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #00ff88;
+  margin-bottom: 1.2rem;
+  text-align: center;
+  letter-spacing: 2px;
+  text-shadow: 0 0 8px #00ff88, 0 0 2px #00ff88;
+}
+
+.admin-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.admin-form input {
+  width: 100%;
+  padding: 0.8rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 1.5px solid #00ff88;
+  background: rgba(0,0,0,0.7);
+  color: #00ff88;
+  outline: none;
+  transition: all 0.2s ease;
+  font-family: inherit;
+  box-shadow: 0 0 8px #00ff8844;
+}
+
+.admin-form input:focus {
+  border-color: #00ff88;
+  background: rgba(0,0,0,0.85);
+  box-shadow: 0 0 0 2px #00ff8844;
+}
+
+.admin-form input:disabled {
+  background-color: #222;
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.admin-form button {
+  display: block;
+  width: fit-content;
+  padding: 0.9rem 2.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #00ff88;
+  background: transparent !important;
+  border: 2px solid #00ff88;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s, background 0.3s, color 0.3s;
+  letter-spacing: 1px;
+  margin: 1.5rem auto 0 auto;
+  box-shadow: 0 0 10px #00ff88;
+}
+
+.admin-form button:hover:not(:disabled) {
+  color: #fff;
+  box-shadow: 0 0 20px rgba(0, 161, 255, 0.8);
+  transform: translateY(-2px);
+}
+
+.admin-form button:disabled {
+  background: #222;
+  color: #888;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.error-message {
+  margin-top: 1rem;
+  color: #e74c3c;
+  background: #ffeaea;
+  padding: 0.7rem 1rem;
+  border-radius: 6px;
+  font-size: 0.97rem;
+  text-align: center;
+  width: 100%;
+}
+
+@media (max-width: 500px) {
+  .admin-login-card {
+    max-width: 95vw;
+    padding: 1.5rem 0.5rem 1rem 0.5rem;
+  }
+  .admin-bg-container {
+    padding: 1rem 0.2rem;
+  }
+} 

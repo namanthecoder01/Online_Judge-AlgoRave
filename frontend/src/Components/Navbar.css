@@ -1,0 +1,142 @@
+.oj-navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 2rem;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    height: 64px;
+}
+
+.oj-navbar.oj-navbar-hacker-theme {
+    background: #000 !important;
+    border-bottom: 2px solid var(--glow-color, #00FF00);
+    box-shadow: 0 0 18px var(--glow-color, #00FF00);
+    font-family: 'Fira Mono', 'Consolas', 'Menlo', monospace;
+    z-index: 1000;
+}
+.oj-nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.oj-nav-logo img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.oj-navbar-hacker-theme .oj-nav-logo span {
+    color: var(--glow-color, #00FF00);
+    text-shadow: 0 0 8px var(--glow-color, #00FF00);
+    font-family: 'Fira Mono', 'Consolas', 'Menlo', monospace;
+    font-size: 1.7rem;
+    letter-spacing: 1.5px;
+}
+.oj-nav-links {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.oj-navbar-hacker-theme .oj-nav-btn {
+    background: none;
+    border: none;
+    color: var(--glow-color, #00FF00);
+    font-family: 'Fira Mono', 'Consolas', 'Menlo', monospace;
+    font-size: 1.08rem;
+    font-weight: 600;
+    margin: 0 0.7rem;
+    padding: 0.6rem 1.3rem;
+    border-radius: 8px;
+    transition: all 0.2s;
+    box-shadow: none;
+    outline: none;
+    position: relative;
+}
+
+.oj-navbar-hacker-theme .oj-nav-btn.active,
+.oj-navbar-hacker-theme .oj-nav-btn:hover {
+    background: var(--glow-color, #00FF00);
+    color: #000;
+    box-shadow: 0 0 12px var(--glow-color, #00FF00);
+    text-shadow: 0 0 8px var(--glow-color, #00FF00);
+}
+.oj-profile-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.oj-profile-button {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.oj-navbar-hacker-theme .oj-profile-avatar {
+    background: #000;
+    color: var(--glow-color, #00FF00);
+    border: 2px solid var(--glow-color, #00FF00);
+    box-shadow: 0 0 8px var(--glow-color, #00FF00);
+    font-family: 'Fira Mono', 'Consolas', 'Menlo', monospace;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.oj-profile-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: rgba(0, 0, 0, 0.9);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 0.5rem;
+    min-width: 180px;
+    margin-top: 0.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    display: none;
+}
+
+.oj-profile-menu.show {
+    display: block;
+}
+
+.oj-profile-menu-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.8rem 1rem;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.oj-profile-menu-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.oj-profile-menu-divider {
+    height: 1px;
+    background: rgba(255, 255, 255, 0.1);
+    margin: 0.5rem 0;
+}

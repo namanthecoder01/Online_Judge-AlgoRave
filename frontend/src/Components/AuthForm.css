@@ -1,32 +1,29 @@
-/* Reset & base styles */
-body, html, #root, .App {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    font-family: 'Inter', sans-serif;
-}
-
 /* Centering container */
 .auth-container {
     min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
+    background-image: url('Assets/bg_hack.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #000;
 }
 
 /* Auth form card */
 .auth-form {
-    background: rgba(0, 0, 0, 0.72);
-    padding: 2rem;
-    border-radius: 16px;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 2.5rem 2rem;
+    border-radius: 18px;
     max-width: 370px;
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    backdrop-filter: blur(8px);
-    box-shadow: 0 8px 32px rgba(0,0,0,0.35);
-    border: 1.5px solid rgba(255,255,255,0.08);
+    backdrop-filter: blur(14px);
+    box-shadow: 0 8px 32px rgba(0,255,0,0.12);
+    border: 1.5px solid rgba(0,255,0,0.18);
 }
 
 /* Logo */
@@ -35,33 +32,40 @@ body, html, #root, .App {
     height: 56px;
     border-radius: 50%;
     margin-bottom: 1rem;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+    box-shadow: 0 2px 8px rgba(0,255,0,0.18);
+    border: 2px solid #00ff88;
 }
 
 /* Titles and tagline */
 .oj-title {
-    font-family: monospace;
-    font-size: 1.5rem;
+    font-family: 'Fira Mono', 'Consolas', 'Courier New', monospace;
+    font-size: 2rem;
     font-weight: bold;
-    color: #fff;
+    color: #00ff88;
     margin-bottom: 0.3rem;
     text-align: center;
+    letter-spacing: 2px;
+    text-shadow: 0 0 8px #00ff88, 0 0 2px #00ff88;
 }
 
 .oj-tagline {
-    font-family: monospace;
-    color: #ccc;
-    font-size: 0.95rem;
-    margin-bottom: 1rem;
+    font-family: 'Fira Mono', 'Consolas', 'Courier New', monospace;
+    color: #b2f7ef;
+    font-size: 1rem;
+    margin-bottom: 1.2rem;
     text-align: center;
+    letter-spacing: 1px;
 }
 
 /* Sub-heading */
 .auth-form h2 {
-    color: #fff;
+    color: #00ff88;
     font-size: 1.2rem;
     margin-bottom: 1.2rem;
     text-align: center;
+    font-family: inherit;
+    letter-spacing: 1px;
+    text-shadow: 0 0 6px #00ff88;
 }
 
 /* Input styling */
@@ -75,17 +79,19 @@ body, html, #root, .App {
     padding: 0.8rem;
     font-size: 1rem;
     border-radius: 8px;
-    border: 1.5px solid #333;
-    background: rgba(255,255,255,0.08);
-    color: #fff;
+    border: 1.5px solid #00ff88;
+    background: rgba(0,0,0,0.7);
+    color: #00ff88;
     outline: none;
     transition: all 0.2s ease;
+    font-family: inherit;
+    box-shadow: 0 0 8px #00ff8844;
 }
 
 .form-group input:focus {
-    border-color: #a259ff;
-    background: rgba(255,255,255,0.15);
-    box-shadow: 0 0 0 2px #a259ff33;
+    border-color: #00ff88;
+    background: rgba(0,0,0,0.85);
+    box-shadow: 0 0 0 2px #00ff8844;
 }
 
 .form-group input:disabled {
@@ -96,26 +102,33 @@ body, html, #root, .App {
 
 /* Submit button */
 .submit-btn {
-    width: 100%;
-    padding: 0.9rem;
+    display: block;
+    width: fit-content;
+    padding: 0.9rem 2.5rem;
     font-size: 1rem;
     font-weight: 600;
-    color: white;
-    background: linear-gradient(90deg, #a259ff, #6a82fb);
-    border: none;
-    border-radius: 8px;
+    color: #00ff88;
+    background: transparent !important;
+    border: 2px solid #00ff88;
+    border-radius: 30px;
     cursor: pointer;
-    transition: 0.2s;
+    transition: transform 0.3s, box-shadow 0.3s, background 0.3s, color 0.3s;
+    letter-spacing: 1px;
+    margin: 1.5rem auto 0 auto;
+    box-shadow: 0 0 10px #00ff88;
 }
 
 .submit-btn:hover:not(:disabled) {
-    background: linear-gradient(90deg, #6a82fb, #a259ff);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.18);
+    color: #fff;
+    box-shadow: 0 0 20px rgba(0, 161, 255, 0.8);
+    transform: translateY(-2px);
 }
 
 .submit-btn:disabled {
-    background: #444;
+    background: #222;
+    color: #888;
     cursor: not-allowed;
+    box-shadow: none;
 }
 
 /* Toggle login/register */
@@ -129,10 +142,11 @@ body, html, #root, .App {
 .toggle-btn {
     background: none;
     border: none;
-    color: #a259ff;
+    color: #00a1ff;
     font-weight: 600;
     cursor: pointer;
     margin-left: 0.5rem;
+    transition: color 0.2s;
 }
 
 .toggle-btn:hover:not(:disabled) {
@@ -174,4 +188,44 @@ body, html, #root, .App {
         opacity: 1;
         transform: translateY(0);
     }
+}
+
+.password-strength-container {
+    width: 100%;
+    height: 5px;
+    background-color: #333;
+    border-radius: 5px;
+    margin-top: 5px;
+}
+
+.password-strength-bar {
+    height: 100%;
+    border-radius: 5px;
+    transition: width 0.3s ease, background-color 0.3s ease;
+}
+
+.password-strength-bar.weak {
+    width: 33%;
+    background-color: red;
+}
+
+.password-strength-bar.medium {
+    width: 66%;
+    background-color: yellow;
+}
+
+.password-strength-bar.strong {
+    width: 100%;
+    background-color: #00ff88;
+}
+
+/* Themed box-shadow for submit button by difficulty */
+.easy .submit-btn {
+    box-shadow: 0 0 10px #00FF00 !important;
+}
+.medium .submit-btn {
+    box-shadow: 0 0 10px #f9a825 !important;
+}
+.hard .submit-btn {
+    box-shadow: 0 0 10px #d93025 !important;
 }

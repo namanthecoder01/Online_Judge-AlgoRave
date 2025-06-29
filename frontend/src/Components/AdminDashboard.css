@@ -1,0 +1,181 @@
+.admin-dashboard-container {
+  max-width: 700px;
+  margin: 0 auto;
+  padding-top: 64px;
+  background: rgba(10, 10, 10, 0.92);
+  border-radius: 18px;
+  box-shadow: 0 0 32px var(--glow-color, #00FF00), 0 0 8px var(--glow-color, #00FF00);
+  border: 2px solid var(--glow-color, #00FF00);
+  padding: 32px 36px 28px 36px;
+  color: #fff;
+  font-family: 'Fira Mono', 'Consolas', 'Menlo', monospace;
+}
+.admin-title {
+  text-align: center;
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 24px;
+  letter-spacing: 1px;
+  color: var(--glow-color, #00FF00);
+  text-shadow: 0 0 8px var(--glow-color, #00FF00);
+  font-family: 'Fira Mono', 'Consolas', 'Menlo', monospace;
+}
+.admin-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  margin-bottom: 28px;
+}
+.admin-tabs button {
+  background: none;
+  border: none;
+  color: #00ffb3;
+  font-size: 1.1rem;
+  font-weight: 500;
+  padding: 10px 28px;
+  border-radius: 8px 8px 0 0;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+  font-family: 'Fira Mono', 'Consolas', 'Menlo', monospace;
+  box-shadow: 0 0 8px var(--glow-color, #00FF00);
+}
+.admin-tabs button.active {
+  background: var(--glow-color, #00FF00);
+  color: #181818;
+  font-weight: 700;
+  box-shadow: 0 0 16px var(--glow-color, #00FF00);
+}
+.admin-tab-content {
+  background: rgba(0,0,0,0.7);
+  border-radius: 0 0 12px 12px;
+  padding: 32px 24px 24px 24px;
+  box-shadow: 0 2px 12px rgba(0,255,179,0.08);
+}
+.admin-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.admin-form-row {
+  display: flex;
+  gap: 18px;
+}
+.admin-form-row input {
+  flex: 1;
+}
+.admin-form input,
+.admin-form textarea {
+  background: #181818;
+  color: #fff;
+  border: 1.5px solid #00ffb3;
+  border-radius: 7px;
+  padding: 12px 14px;
+  font-size: 1rem;
+  margin-bottom: 0;
+  transition: border 0.2s, box-shadow 0.2s;
+}
+.admin-form input:focus,
+.admin-form textarea:focus {
+  outline: none;
+  border-color: #00ffb3;
+  box-shadow: 0 0 8px #00ffb344;
+}
+.admin-form input[type="checkbox"] {
+  width: auto;
+  margin: 0;
+  cursor: pointer;
+}
+.admin-form textarea {
+  min-height: 70px;
+  resize: vertical;
+}
+.admin-checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1rem;
+  color: #00ffb3;
+}
+.admin-submit-btn {
+  background: linear-gradient(90deg, #00ffb3 0%, #00cfff 100%);
+  color: #181818;
+  border: none;
+  border-radius: 8px;
+  padding: 13px 0;
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-top: 10px;
+  cursor: pointer;
+  box-shadow: 0 2px 12px #00ffb344;
+  transition: background 0.2s, color 0.2s;
+}
+.admin-submit-btn:hover {
+  background: linear-gradient(90deg, #00cfff 0%, #00ffb3 100%);
+  color: #000;
+}
+.success-message {
+  color: #00ffb3;
+  background: #0a2e1c;
+  border-radius: 6px;
+  padding: 10px 18px;
+  margin-top: 18px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 1.08rem;
+}
+.error-message {
+  color: #ff4d4d;
+  background: #2e0a0a;
+  border-radius: 6px;
+  padding: 10px 18px;
+  margin-top: 18px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 1.08rem;
+}
+.sample-testcase-section {
+  background: rgba(0, 255, 179, 0.07);
+  border: 1.5px solid #00ffb3;
+  border-radius: 10px;
+  padding: 18px 16px 10px 16px;
+  margin: 12px 0 18px 0;
+}
+.sample-testcase-section h4 {
+  margin: 0 0 8px 0;
+  color: #00ffb3;
+  font-size: 1.08rem;
+  font-weight: 600;
+}
+.sample-testcase-section textarea,
+.sample-testcase-section input {
+  margin-bottom: 8px;
+  width: 100%;
+  background: #101c1c;
+  border: 1.2px solid #00ffb3;
+  border-radius: 6px;
+  color: #fff;
+  font-size: 1rem;
+  padding: 10px 12px;
+  transition: border 0.2s;
+}
+.sample-testcase-section textarea:focus,
+.sample-testcase-section input:focus {
+  border-color: #00cfff;
+}
+@media (max-width: 800px) {
+  .admin-dashboard-container {
+    padding: 64px 4vw 0 4vw;
+  }
+  .admin-tab-content {
+    padding: 18px 2vw 18px 2vw;
+  }
+}
+@media (max-width: 600px) {
+  .admin-dashboard-container {
+    padding: 64px 0 0 0;
+  }
+  .admin-form-row {
+    flex-direction: column;
+    gap: 8px;
+  }
+} 

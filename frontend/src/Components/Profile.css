@@ -1,0 +1,112 @@
+/* Profile Component Styles */
+
+.oj-profile-header-username {
+    color: var(--oj-badge-glow, #00ff41);
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+.oj-stats-card {
+    background: rgba(0,0,0,0.6);
+    padding: 2rem;
+    border-radius: 16px;
+    margin-top: 2rem;
+    box-shadow: 0 0 24px var(--oj-badge-glow, #00ff41), 0 0 4px var(--oj-badge-glow, #00ff41);
+    border: 2px solid var(--oj-badge-glow, #00ff41);
+}
+
+.oj-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.oj-stat-card {
+    background: rgba(0,0,0,0.4);
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 1px solid var(--oj-badge-glow, #00ff41);
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.oj-stat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px var(--oj-badge-glow, #00ff41, 0.3);
+}
+
+.oj-stat-value {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--oj-badge-glow, #00ff41);
+    margin-bottom: 0.5rem;
+}
+
+.oj-stat-label {
+    font-size: 0.9rem;
+    color: #ccc;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .oj-stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .oj-stat-value {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .oj-stats-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.oj-profile-header-card {
+    box-shadow: 0 0 24px var(--oj-badge-glow, #00ff41), 0 0 4px var(--oj-badge-glow, #00ff41);
+    border: 2px solid var(--oj-badge-glow, #00ff41);
+    background: rgba(0,0,0,0.6);
+    border-radius: 16px;
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+}
+
+.oj-profile-form {
+    background: rgba(0,0,0,0.6);
+    padding: 2rem;
+    border-radius: 16px;
+    margin-top: 2rem;
+    box-shadow: 0 0 24px var(--oj-badge-glow, #00ff41), 0 0 4px var(--oj-badge-glow, #00ff41);
+    border: 2px solid var(--oj-badge-glow, #00ff41);
+}
+
+.oj-profile-actions {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.oj-edit-btn {
+    background: transparent;
+    color: var(--oj-badge-glow, #00ff41);
+    border: 3px solid var(--oj-badge-glow, #00ff41);
+    border-radius: 10px;
+    padding: 0.75rem 2.5rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 0 16px var(--oj-badge-glow, #00ff41);
+    transition: box-shadow 0.2s, background 0.2s, color 0.2s;
+}
+
+.oj-edit-btn:hover {
+    background: var(--oj-badge-glow, #00ff41);
+    color: #000;
+    box-shadow: 0 0 32px var(--oj-badge-glow, #00ff41);
+} 

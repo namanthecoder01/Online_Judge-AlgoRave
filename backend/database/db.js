@@ -1,10 +1,9 @@
 import mongoose from "mongoose";
-import dotenv from "dotenv";
-dotenv.config();
+import { config } from "../config.js";
 
 const DBConnection = async () => {
-    // MongoDB Atlas connection string
-    const MONGO_URI = process.env.MONGODB_URI;
+    // MongoDB connection string
+    const MONGO_URI = config.MONGODB_URI;
     
     if (!MONGO_URI) {
         console.error("MONGODB_URI is not defined in environment variables");
@@ -12,16 +11,16 @@ const DBConnection = async () => {
     }
 
     try {
-        // Connect to MongoDB Atlas
+        // Connect to MongoDB
         await mongoose.connect(MONGO_URI, {
             useNewUrlParser: true,
             useUnifiedTopology: true,
             serverSelectionTimeoutMS: 5000,
             socketTimeoutMS: 45000,
         });
-        console.log("Successfully connected to MongoDB Atlas");
+        console.log("Successfully connected to MongoDB");
     } catch (error) {
-        console.error("Failed to connect to MongoDB Atlas:", error.message);
+        console.error("Failed to connect to MongoDB:", error.message);
         process.exit(1);
     }
 };
