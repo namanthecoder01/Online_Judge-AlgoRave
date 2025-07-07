@@ -77,8 +77,8 @@ docker-compose --version
 
 ### 1. Clone the Repository
 ```bash
-git clone <repository-url>
-cd Online_Judge-AlgoRave-1
+git clone https://github.com/namanthecoder01/Online_Judge-AlgoRave
+cd Online_Judge-AlgoRave
 ```
 
 ### 2. Backend Setup
@@ -153,9 +153,9 @@ npm start
 ```
 
 ### 5. Access the Application
-- **Frontend**: http://localhost:3000
-- **Backend API**: http://localhost:5000
-- **Compiler Service**: http://localhost:8000
+- **Frontend**: https://online-judge-algo-rave.vercel.app
+- **Backend API**: http://16.170.115.103:5000
+- **Compiler Service**: http://13.60.119.113:8000
 
 ## 🐳 Docker Management
 
