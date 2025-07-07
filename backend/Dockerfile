@@ -17,7 +17,7 @@ COPY . .
 EXPOSE 5000
 
 # Set environment variable for compiler-backend URL (can be overridden)
-ENV COMPILER_BACKEND_URL=http://13.53.112.15:8000
+ENV COMPILER_BACKEND_URL=https://online-judge-algorave-2.onrender.com
 
 # Start the backend server
 CMD ["node", "index.js"]
