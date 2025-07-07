@@ -4,6 +4,7 @@ import Navbar from './Navbar';
 import { syncUserProfile } from '../utils/userSync';
 import './Profile.css';
 import { badgeColors, badgeLogos } from '../theme';
+import { BACKEND_URL } from '../utils/apiEndpoints';
 
 const Profile = () => {
     const [user, setUser] = useState(null);
@@ -22,7 +23,7 @@ const Profile = () => {
             navigate('/');
             return;
         }
-        fetch('http://localhost:5000/api/user/profile', {
+        fetch(`${BACKEND_URL}/api/user/profile`, {
             headers: { 'Authorization': `Bearer ${token}` }
         })
             .then(res => res.json())
@@ -50,7 +51,7 @@ const Profile = () => {
         const fetchUserStats = async () => {
             try {
                 const token = localStorage.getItem('token');
-                const response = await fetch('http://localhost:5000/api/user/stats', {
+                const response = await fetch(`${BACKEND_URL}/api/user/stats`, {
                     headers: { 'Authorization': `Bearer ${token}` }
                 });
                 const data = await response.json();
@@ -78,7 +79,7 @@ const Profile = () => {
         setError(null);
         const token = localStorage.getItem('token');
         try {
-            const res = await fetch('http://localhost:5000/api/user/profile', {
+            const res = await fetch(`${BACKEND_URL}/api/user/profile`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
@@ -213,4 +214,4 @@ const Profile = () => {
     );
 };
 
-export default Profile; 
+export default Profile;

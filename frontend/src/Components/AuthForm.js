@@ -4,9 +4,10 @@ import axios from 'axios';
 import './AuthForm.css';
 import logo from '../Components/Assets/logo.jpg';
 import { syncUserProfile } from '../utils/userSync';
+import { BACKEND_URL } from '../utils/apiEndpoints';
 
 const api = axios.create({
-    baseURL: 'http://localhost:5000',
+    baseURL: BACKEND_URL,
     withCredentials: true,
     headers: { 'Content-Type': 'application/json' }
 });

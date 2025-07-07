@@ -4,6 +4,7 @@ import Navbar from './Navbar';
 import './Home.css';
 import { difficultyColors, badgeLogos } from '../theme';
 import { MOTIVATIONS } from '../utils/motivations';
+import { BACKEND_URL } from '../utils/apiEndpoints';
 
 // Hack-themed animated bar chart component
 const HackBarChart = ({ easy, medium, hard, totalEasy, totalMedium, totalHard, easyLabel, mediumLabel, hardLabel }) => {
@@ -46,7 +47,7 @@ const Home = () => {
             navigate('/');
             return;
         }
-        fetch('http://localhost:5000/api/user/profile', {
+        fetch(`${BACKEND_URL}/api/user/profile`, {
             headers: { 'Authorization': `Bearer ${token}` }
         })
             .then(res => res.json())
@@ -65,7 +66,7 @@ const Home = () => {
         const fetchUserStats = async () => {
             try {
                 const token = localStorage.getItem('token');
-                const response = await fetch('http://localhost:5000/api/user/stats', {
+                const response = await fetch(`${BACKEND_URL}/api/user/stats`, {
                     headers: { 'Authorization': `Bearer ${token}` }
                 });
                 const data = await response.json();
@@ -82,7 +83,7 @@ const Home = () => {
     useEffect(() => {
         const fetchProblems = async () => {
             try {
-                const response = await fetch('http://localhost:5000/api/problems');
+                const response = await fetch(`${BACKEND_URL}/api/problems`);
                 const data = await response.json();
                 if (data.success) {
                     setProblems(data.problems);
@@ -106,7 +107,7 @@ const Home = () => {
     // Fetch leaderboard stats for user
     useEffect(() => {
         if (user) {
-            fetch(`http://localhost:5000/api/leaderboard?limit=1000`)
+            fetch(`${BACKEND_URL}/api/leaderboard?limit=1000`)
                 .then(res => res.json())
                 .then(data => {
                     if (data.success && Array.isArray(data.leaderboard)) {
@@ -114,7 +115,7 @@ const Home = () => {
                         if (entry) setUserRank(entry.rank);
                     }
                 });
-            fetch(`http://localhost:5000/api/leaderboard/user/${user._id}`)
+            fetch(`${BACKEND_URL}/api/leaderboard/user/${user._id}`)
                 .then(res => res.json())
                 .then(data => {
                     if (data.success) setLeaderboardStats(data.userStats);

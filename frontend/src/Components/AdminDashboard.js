@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './AdminDashboard.css';
+import { BACKEND_URL } from '../utils/apiEndpoints';
 
 const TABS = ['Add Problem', 'Add Test Case', 'Add Contest'];
 
@@ -101,7 +102,7 @@ const AdminDashboard = () => {
         isPublished: problemForm.isPublished
       };
       
-      const res = await fetch('http://localhost:5000/admin/problem', {
+      const res = await fetch(`${BACKEND_URL}/admin/problem`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -121,7 +122,7 @@ const AdminDashboard = () => {
     e.preventDefault();
     setMessage(''); setError('');
     try {
-      const res = await fetch('http://localhost:5000/admin/testcase', {
+      const res = await fetch(`${BACKEND_URL}/admin/testcase`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -157,7 +158,7 @@ const AdminDashboard = () => {
     const problemsArr = contestForm.problems.split(',').map(p => p.trim()).filter(Boolean);
     const prizesArr = contestForm.prizes.split(',').map(p => p.trim()).filter(Boolean);
     try {
-      const res = await fetch('http://localhost:5000/admin/contest', {
+      const res = await fetch(`${BACKEND_URL}/admin/contest`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -266,4 +267,4 @@ const AdminDashboard = () => {
   );
 };
 
-export default AdminDashboard; 
+export default AdminDashboard;

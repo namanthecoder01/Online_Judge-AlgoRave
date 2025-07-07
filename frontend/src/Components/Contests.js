@@ -5,6 +5,7 @@ import bgImg from './Assets/bg_img.jpg';
 import './Contests.css'; // Import the CSS file
 import './SolveProblem.css'; // Reusing some styles
 import { difficultyColors } from '../theme';
+import { BACKEND_URL } from '../utils/apiEndpoints';
 
 const Contests = () => {
     const navigate = useNavigate();
@@ -44,7 +45,7 @@ const Contests = () => {
     const fetchContests = async () => {
         try {
             setLoading(true);
-            const response = await fetch('http://localhost:5000/api/contests');
+            const response = await fetch(`${BACKEND_URL}/api/contests`);
             if (!response.ok) {
                 throw new Error('Failed to fetch contests');
             }
@@ -68,7 +69,7 @@ const Contests = () => {
     const fetchUserRegisteredContests = async () => {
         try {
             const token = localStorage.getItem('token');
-            const response = await fetch('http://localhost:5000/api/user/contests', {
+            const response = await fetch(`${BACKEND_URL}/api/user/contests`, {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }
@@ -85,7 +86,7 @@ const Contests = () => {
     const handleRegister = async (contestId) => {
         try {
             const token = localStorage.getItem('token');
-            const response = await fetch(`http://localhost:5000/api/contests/${contestId}/register`, {
+            const response = await fetch(`${BACKEND_URL}/api/contests/${contestId}/register`, {
                 method: 'POST',
                 headers: {
                     'Authorization': `Bearer ${token}`,
@@ -110,7 +111,7 @@ const Contests = () => {
     const handleUnregister = async (contestId) => {
         try {
             const token = localStorage.getItem('token');
-            const response = await fetch(`http://localhost:5000/api/contests/${contestId}/unregister`, {
+            const response = await fetch(`${BACKEND_URL}/api/contests/${contestId}/unregister`, {
                 method: 'POST',
                 headers: {
                     'Authorization': `Bearer ${token}`,
@@ -135,7 +136,7 @@ const Contests = () => {
     const handleEndContest = async (contestId) => {
         try {
             const token = localStorage.getItem('token');
-            const response = await fetch(`http://localhost:5000/api/contests/${contestId}/end`, {
+            const response = await fetch(`${BACKEND_URL}/api/contests/${contestId}/end`, {
                 method: 'POST',
                 headers: {
                     'Authorization': `Bearer ${token}`,
@@ -158,7 +159,7 @@ const Contests = () => {
 
     const fetchContestResults = async (contestId) => {
         try {
-            const response = await fetch(`http://localhost:5000/api/contests/${contestId}/results`);
+            const response = await fetch(`${BACKEND_URL}/api/contests/${contestId}/results`);
             const data = await response.json();
 
             if (response.ok && data.success) {
@@ -461,4 +462,4 @@ const Contests = () => {
     );
 };
 
-export default Contests; 
+export default Contests;

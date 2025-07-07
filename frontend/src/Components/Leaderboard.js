@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import Navbar from './Navbar';
 import './Leaderboard.css';
 import { badgeColors } from '../theme';
+import { BACKEND_URL } from '../utils/apiEndpoints';
 
 const Leaderboard = () => {
     const navigate = useNavigate();
@@ -37,7 +38,7 @@ const Leaderboard = () => {
                 setError(null);
                 const token = localStorage.getItem('token');
                 // Fetch all users by setting limit=0. Sort by rating initially.
-                const response = await fetch(`http://localhost:5000/api/leaderboard?sortBy=rating&limit=0`, {
+                const response = await fetch(`${BACKEND_URL}/api/leaderboard?sortBy=rating&limit=0`, {
                     headers: {
                         'Authorization': `Bearer ${token}`,
                         'Content-Type': 'application/json'

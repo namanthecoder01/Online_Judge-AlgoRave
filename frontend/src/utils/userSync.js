@@ -1,6 +1,8 @@
+import { BACKEND_URL } from '../utils/apiEndpoints';
+
 export async function syncUserProfile(token) {
   try {
-    const res = await fetch('http://localhost:5000/api/user/profile', {
+    const res = await fetch(`${BACKEND_URL}/api/user/profile`, {
       headers: { 'Authorization': `Bearer ${token}` }
     });
     const data = await res.json();

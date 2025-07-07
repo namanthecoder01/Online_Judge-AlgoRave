@@ -6,6 +6,7 @@ import './Compiler.css'; // Use a separate CSS for Compiler
 import axios from 'axios';
 import { badgeColors } from '../theme';
 import ReactMarkdown from 'react-markdown';
+import { COMPILER_URL } from '../utils/apiEndpoints';
 
 const defaultCode = {
     'python': '# Write your Python code here\n\n',
@@ -77,7 +78,7 @@ const Compiler = () => {
                 input
             };
             // Change the URL below if your backend runs on a different port
-            const { data } = await axios.post('http://localhost:8000/run', payload);
+            const { data } = await axios.post(`${COMPILER_URL}/run`, payload);
             setOutput(data.output || JSON.stringify(data));
         } catch (error) {
             let errMsg = error.response?.data?.error || error.message;
@@ -117,7 +118,7 @@ const Compiler = () => {
         setAiReview('Generating AI code review...');
         
         try {
-            const { data } = await axios.post('http://localhost:8000/ai/review', {
+            const { data } = await axios.post(`${COMPILER_URL}/ai/review`, {
                 code,
                 language
             });
@@ -140,7 +141,7 @@ const Compiler = () => {
         setAiExplanation('Generating AI code explanation...');
         
         try {
-            const { data } = await axios.post('http://localhost:8000/ai/explain', {
+            const { data } = await axios.post(`${COMPILER_URL}/ai/explain`, {
                 code,
                 language
             });
@@ -163,7 +164,7 @@ const Compiler = () => {
         setAiOptimization('Generating AI optimization suggestions...');
         
         try {
-            const { data } = await axios.post('http://localhost:8000/ai/optimize', {
+            const { data } = await axios.post(`${COMPILER_URL}/ai/optimize`, {
                 code,
                 language
             });

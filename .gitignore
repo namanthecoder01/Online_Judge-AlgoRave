@@ -172,4 +172,8 @@ coverage/
 # yarn.lock
 
 # Local development files
-.local/ 
+.local/
+
+# Keys directory
+keys/
+

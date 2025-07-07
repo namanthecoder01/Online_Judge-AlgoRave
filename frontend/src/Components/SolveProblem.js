@@ -7,6 +7,7 @@ import { syncUserProfile } from '../utils/userSync';
 import axios from 'axios';
 import { difficultyColors, badgeColors } from '../theme';
 import ReactMarkdown from 'react-markdown';
+import { BACKEND_URL, COMPILER_URL } from '../utils/apiEndpoints';
 
 const defaultCode = {
     cpp: '#include <iostream>\nusing namespace std;\nint main() {\n    // your code here\n    return 0;\n}',
@@ -74,7 +75,7 @@ const SolveProblem = () => {
     useEffect(() => {
         const fetchProblem = async () => {
             try {
-                const response = await fetch(`http://localhost:5000/api/problems/code/${problemCode}`);
+                const response = await fetch(`${BACKEND_URL}/api/problems/code/${problemCode}`);
                 const data = await response.json();
                 if (data.success) {
                     setProblem(data.problem);
@@ -98,7 +99,7 @@ const SolveProblem = () => {
         setSubmissionsError(null);
         try {
             const token = localStorage.getItem('token');
-            const res = await fetch(`http://localhost:5000/api/problems/code/${problemCode}/submissions`, {
+            const res = await fetch(`${BACKEND_URL}/api/problems/code/${problemCode}/submissions`, {
                 headers: { 'Authorization': `Bearer ${token}` }
             });
             const data = await res.json();
@@ -135,7 +136,7 @@ const SolveProblem = () => {
                 code: editorCode,
                 input
             };
-            const { data } = await axios.post('http://localhost:8000/run', payload);
+            const { data } = await axios.post(`${COMPILER_URL}/run`, payload);
             setOutput(data.output || JSON.stringify(data));
         } catch (error) {
             let errMsg = error.response?.data?.error || error.message;
@@ -157,7 +158,7 @@ const SolveProblem = () => {
         setTestCaseResults(null);
         setSubmissionMeta(null);
         try {
-            const res = await fetch(`http://localhost:5000/api/problems/code/${problemCode}/submit`, {
+            const res = await fetch(`${BACKEND_URL}/api/problems/code/${problemCode}/submit`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -180,7 +181,7 @@ const SolveProblem = () => {
                     fetchSubmissions();
                 }
                 // Fetch updated user profile and update localStorage/state
-                const profileRes = await fetch('http://localhost:5000/api/user/profile', {
+                const profileRes = await fetch(`${BACKEND_URL}/api/user/profile`, {
                     headers: { 'Authorization': `Bearer ${token}` }
                 });
                 const profileData = await profileRes.json();
@@ -226,7 +227,7 @@ const SolveProblem = () => {
         setAiReview('Generating AI code review...');
         
         try {
-            const { data } = await axios.post('http://localhost:8000/ai/review', {
+            const { data } = await axios.post(`${COMPILER_URL}/ai/review`, {
                 code: editorCode,
                 language
             });
@@ -249,7 +250,7 @@ const SolveProblem = () => {
         setAiExplanation('Generating AI code explanation...');
         
         try {
-            const { data } = await axios.post('http://localhost:8000/ai/explain', {
+            const { data } = await axios.post(`${COMPILER_URL}/ai/explain`, {
                 code: editorCode,
                 language
             });
@@ -272,7 +273,7 @@ const SolveProblem = () => {
         setAiOptimization('Generating AI optimization suggestions...');
         
         try {
-            const { data } = await axios.post('http://localhost:8000/ai/optimize', {
+            const { data } = await axios.post(`${COMPILER_URL}/ai/optimize`, {
                 code: editorCode,
                 language
             });
@@ -296,7 +297,7 @@ const SolveProblem = () => {
             setDiscussionsLoading(true);
             setDiscussionsError(null);
             try {
-                const res = await fetch(`http://localhost:5000/api/problems/${problem._id}/discussions`);
+                const res = await fetch(`${BACKEND_URL}/api/problems/${problem._id}/discussions`);
                 const data = await res.json();
                 if (data.success) {
                     setDiscussions(data.discussions);
@@ -321,7 +322,7 @@ const SolveProblem = () => {
         setPostingDiscussion(true);
         try {
             const token = localStorage.getItem('token');
-            const res = await fetch(`http://localhost:5000/api/problems/${problem._id}/discussions`, {
+            const res = await fetch(`${BACKEND_URL}/api/problems/${problem._id}/discussions`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

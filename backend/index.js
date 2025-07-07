@@ -5,13 +5,10 @@ import jwt from "jsonwebtoken";
 import cookieParser from "cookie-parser";
 import mongoose from "mongoose";
 import { createRequire } from "module";
-import { generateFile } from "../compiler-backend/generateFile.js";
+import axios from "axios";
 
-// Compiler backend imports (using require for CommonJS modules)
-const require = createRequire(import.meta.url);
-const { executeCpp } = require("../compiler-backend/executeCpp.js");
-const { executePython } = require("../compiler-backend/executePython.js");
-const { executeJava } = require("../compiler-backend/executeJava.js");
+// Remote compiler-backend URL (can be set via env variable)
+const COMPILER_BACKEND_URL = process.env.COMPILER_BACKEND_URL || "http://13.53.112.15:8000";
 
 // Database and configuration imports
 import { DBConnection } from "./database/db.js";
@@ -438,17 +435,39 @@ app.get("/api/user/submissions", async (req, res) => {
     }
 });
 
-// Helper function to execute code based on language
+// Helper function to execute code based on language (calls remote compiler-backend)
 const executeCode = async (language, filePath, input, timeLimit, memoryLimit) => {
-    switch (language) {
-        case 'cpp':
-            return await executeCpp(filePath, input, timeLimit, memoryLimit);
-        case 'python':
-            return await executePython(filePath, input, timeLimit, memoryLimit);
-        case 'java':
-            return await executeJava(filePath, input, timeLimit, memoryLimit);
-        default:
-            throw new Error('Unsupported language');
+    try {
+        const response = await axios.post(`${COMPILER_BACKEND_URL}/execute`, {
+            language,
+            filePath,
+            input,
+            timeLimit,
+            memoryLimit
+        });
+        return response.data;
+    } catch (err) {
+        // If the remote server returns an error response
+        if (err.response && err.response.data) {
+            throw err.response.data;
+        }
+        throw err;
+    }
+};
+
+// Helper function to generate file on remote compiler-backend
+const generateFileRemote = async (language, code) => {
+    try {
+        const response = await axios.post(`${COMPILER_BACKEND_URL}/generate-file`, {
+            language,
+            code
+        });
+        return response.data.filePath; // Assumes remote returns { filePath }
+    } catch (err) {
+        if (err.response && err.response.data) {
+            throw err.response.data;
+        }
+        throw err;
     }
 };
 
@@ -509,7 +528,7 @@ app.post("/api/problems/:id/submit", async (req, res) => {
         // Generate file for user code
         let filePath;
         try {
-            filePath = generateFile(language, code);
+            filePath = await generateFileRemote(language, code);
         } catch (err) {
             return res.status(500).json({ success: false, message: "Error generating code file." });
         }
@@ -992,7 +1011,7 @@ app.post('/api/problems/code/:code/submit', async (req, res) => {
         // Generate file for user code
         let filePath;
         try {
-            filePath = generateFile(language, submittedCode);
+            filePath = await generateFileRemote(language, submittedCode);
         } catch (err) {
             return res.status(500).json({ success: false, message: 'Error generating code file.' });
         }

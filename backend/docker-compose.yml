@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  backend:
+    build: .
+    container_name: algorave-backend
+    ports:
+      - "5000:5000"
+    environment:
+      - COMPILER_BACKEND_URL=http://13.53.112.15:8000
+      - NODE_ENV=production
+      - PORT=5000
+      - MONGODB_URI=mongodb+srv://namanjainit22a962:namanjainit22a962@algorave.p2djpkb.mongodb.net/?retryWrites=true&w=majority&appName=AlgoRave
+    env_file:
+      - .env
+    restart: unless-stopped
+    # volumes:
+    #   - ./logs:/app/logs
