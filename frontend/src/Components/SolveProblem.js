@@ -839,7 +839,7 @@ const SolveProblem = () => {
                                     <span>Total Execution Time: {submissionMeta.executionTime} ms</span>
                                 )}
                                 {submissionMeta.memoryUsed !== undefined && (
-                                    <span style={{ marginLeft: 24 }}>Total Memory Used: {submissionMeta.memoryUsed} MB</span>
+                                    <span style={{ marginLeft: 24 }}>Total Memory Used: {Number(submissionMeta.memoryUsed).toFixed(2)} MB</span>
                                 )}
                             </div>
                         )}

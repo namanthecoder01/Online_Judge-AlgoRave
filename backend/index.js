@@ -620,7 +620,7 @@ app.post("/api/problems/:id/submit", async (req, res) => {
             });
         }
         const totalExecutionTime = maxExecTime;
-        const finalMemoryUsed = Math.round(maxMemoryUsed / 1024); // Convert KB to MB
+        const finalMemoryUsed = +(maxMemoryUsed / 1024).toFixed(2); // Convert KB to MB, 2 decimals
         
         // Determine overall submission status based on first error
         let overallStatus = determineStatus(allPassed, firstErrorStatus);
@@ -1103,7 +1103,7 @@ app.post('/api/problems/code/:code/submit', async (req, res) => {
             });
         }
         const totalExecutionTime = maxExecTime;
-        const finalMemoryUsed = Math.round(maxMemoryUsed / 1024); // Convert KB to MB
+        const finalMemoryUsed = +(maxMemoryUsed / 1024).toFixed(2); // Convert KB to MB, 2 decimals
         
         // Determine overall submission status based on first error
         let overallStatus = determineStatus(allPassed, firstErrorStatus);

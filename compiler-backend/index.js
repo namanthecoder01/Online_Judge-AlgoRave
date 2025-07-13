@@ -82,7 +82,7 @@ app.post("/run", async (req, res) => {
             default:
                 throw new Error('Unsupported language');
         }
-        res.json({ filePath, output, memoryUsed: Math.round(memoryUsed / 1024), execTime, status }); // Convert KB to MB
+        res.json({ filePath, output, memoryUsed: +(memoryUsed / 1024).toFixed(2), execTime, status }); // Convert KB to MB, 2 decimals
     } catch (error) {
         let errorMsg = error;
         let memoryUsed = 0;

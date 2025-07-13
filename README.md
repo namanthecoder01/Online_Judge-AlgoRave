@@ -153,9 +153,11 @@ npm start
 ```
 
 ### 5. Access the Application
-- **Frontend**: http://localhost:3000
+- **Frontend**: https://online-judge-algo-rave.vercel.app/
 - **Backend API**: https://algorave.me
-- **Compiler Service**: http://localhost:8000
+- **Compiler Service**: https://online-judge-algorave-2.onrender.com/
+
+> **Note:** These are the current deployment URLs as of the latest deployment. Update if your deployment changes.
 
 ## 🐳 Docker Management
 
@@ -278,6 +280,7 @@ Each problem has configurable limits defined in the Problem model:
 - **Time Limit**: Uses Node.js `setTimeout()` to kill processes after the specified time limit
 - **Memory Limit**: Monitors memory usage every 50ms and kills processes when limits are exceeded
 - **Cross-platform Support**: Memory monitoring works on Windows, Linux, and macOS
+- **Accurate Reporting**: Memory usage is now displayed with two decimal places for accuracy. Small usages (less than 1 MB) will be shown as, e.g., `0.78 MB` instead of `0 MB`.
 
 ### Status Codes
 | Status | Description | When It Occurs |
