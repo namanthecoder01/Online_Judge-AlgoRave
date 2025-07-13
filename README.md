@@ -77,8 +77,8 @@ docker-compose --version
 
 ### 1. Clone the Repository
 ```bash
-git clone <repository-url>
-cd Online_Judge-AlgoRave-1
+git clone https://github.com/namanthecoder01/Online_Judge-AlgoRave
+cd Online_Judge-AlgoRave
 ```
 
 ### 2. Backend Setup
