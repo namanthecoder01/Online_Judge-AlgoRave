@@ -109,7 +109,7 @@ app.post("/run", async (req, res) => {
             }
         }
         console.error('Execution error:', errorMsg);
-        res.status(200).json({ output: errorMsg, memoryUsed: Math.round(memoryUsed / 1024), execTime, status }); // Convert KB to MB
+        res.status(200).json({ output: errorMsg, memoryUsed: +(memoryUsed / 1024).toFixed(2), execTime, status }); // Convert KB to MB, 2 decimals
     }
 });
 
@@ -167,7 +167,7 @@ app.post("/execute", async (req, res) => {
         res.json({ 
             success: true, 
             output, 
-            memoryUsed: Math.round(memoryUsed / 1024), 
+            memoryUsed: +(memoryUsed / 1024).toFixed(2), 
             execTime, 
             status 
         });
@@ -204,7 +204,7 @@ app.post("/execute", async (req, res) => {
         res.status(200).json({ 
             success: false, 
             error: errorMsg, 
-            memoryUsed: Math.round(memoryUsed / 1024), 
+            memoryUsed: +(memoryUsed / 1024).toFixed(2), 
             execTime, 
             status 
         });
