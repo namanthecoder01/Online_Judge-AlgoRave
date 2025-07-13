@@ -66,18 +66,21 @@ app.post("/run", async (req, res) => {
                 output = cppResult.output;
                 memoryUsed = cppResult.memoryUsed || 0;
                 execTime = cppResult.execTime || 0;
+                console.log(`C++ execution - Memory used: ${memoryUsed} KB = ${+(memoryUsed / 1024).toFixed(2)} MB`);
                 break;
             case 'python':
                 const pythonResult = await executePython(filePath, input, timeLimit, memoryLimit);
                 output = pythonResult.output;
                 memoryUsed = pythonResult.memoryUsed || 0;
                 execTime = pythonResult.execTime || 0;
+                console.log(`Python execution - Memory used: ${memoryUsed} KB = ${+(memoryUsed / 1024).toFixed(2)} MB`);
                 break;
             case 'java':
                 const javaResult = await executeJava(filePath, input, timeLimit, memoryLimit);
                 output = javaResult.output;
                 memoryUsed = javaResult.memoryUsed || 0;
                 execTime = javaResult.execTime || 0;
+                console.log(`Java execution - Memory used: ${memoryUsed} KB = ${+(memoryUsed / 1024).toFixed(2)} MB`);
                 break;
             default:
                 throw new Error('Unsupported language');

@@ -66,6 +66,9 @@ const executeJava = (filepath, input = "", timeLimit = 5000, memoryLimit = 256) 
                         memoryKB = parseInt(result.trim()) || 0;
                     }
                     
+                    // Log memory values for debugging
+                    console.log(`Memory check - PID: ${runProcess.pid}, Memory: ${memoryKB} KB, Max so far: ${maxMemoryUsage} KB`);
+                    
                     maxMemoryUsage = Math.max(maxMemoryUsage, memoryKB);
                     
                     if (maxMemoryUsage > memoryLimit * 1024) {
@@ -89,7 +92,7 @@ const executeJava = (filepath, input = "", timeLimit = 5000, memoryLimit = 256) 
             }, timeLimit);
             
             setTimeout(checkMemory, 10);
-            const memoryMonitor = setInterval(checkMemory, 50);
+            const memoryMonitor = setInterval(checkMemory, 10); // Changed from 50ms to 10ms
             
             runProcess.on('close', () => {
                 clearInterval(memoryMonitor);

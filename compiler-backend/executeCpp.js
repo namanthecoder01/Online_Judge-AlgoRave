@@ -53,6 +53,10 @@ const executeCpp = (filepath, input = "", timeLimit = 5000, memoryLimit = 256) =
                         const result = execSync(`ps -p ${runProcess.pid} -o rss=`, { encoding: 'utf8' });
                         memoryKB = parseInt(result.trim()) || 0;
                     }
+                    
+                    // Log memory values for debugging
+                    console.log(`Memory check - PID: ${runProcess.pid}, Memory: ${memoryKB} KB, Max so far: ${maxMemoryUsage} KB`);
+                    
                     maxMemoryUsage = Math.max(maxMemoryUsage, memoryKB);
                     
                     // Check memory limit (convert MB to KB)
@@ -64,6 +68,7 @@ const executeCpp = (filepath, input = "", timeLimit = 5000, memoryLimit = 256) =
                     }
                 } catch (err) {
                     // Ignore all monitoring errors silently
+                    console.log('Memory check error:', err.message);
                 }
             };
             
@@ -77,7 +82,7 @@ const executeCpp = (filepath, input = "", timeLimit = 5000, memoryLimit = 256) =
             setTimeout(checkMemory, 10);
             
             // Monitor memory usage more frequently
-            const memoryMonitor = setInterval(checkMemory, 50);
+            const memoryMonitor = setInterval(checkMemory, 10); // Changed from 50ms to 10ms
             
             runProcess.on('close', () => {
                 clearInterval(memoryMonitor);
