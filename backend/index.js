@@ -461,6 +461,7 @@ app.get("/api/user/submissions", async (req, res) => {
 // Helper function to execute code based on language (calls remote compiler-backend)
 const executeCode = async (language, filePath, input, timeLimit, memoryLimit) => {
     try {
+        console.log(`Executing code: ${language}, filePath: ${filePath}, timeLimit: ${timeLimit}, memoryLimit: ${memoryLimit}`);
         const response = await axios.post(`${COMPILER_BACKEND_URL}/execute`, {
             language,
             filePath,
@@ -468,8 +469,10 @@ const executeCode = async (language, filePath, input, timeLimit, memoryLimit) =>
             timeLimit,
             memoryLimit
         });
+        console.log('Execute response:', response.data);
         return response.data;
     } catch (err) {
+        console.error('Execute code error:', err);
         // If the remote server returns an error response
         if (err.response && err.response.data) {
             throw err.response.data;
@@ -481,12 +484,15 @@ const executeCode = async (language, filePath, input, timeLimit, memoryLimit) =>
 // Helper function to generate file on remote compiler-backend
 const generateFileRemote = async (language, code) => {
     try {
+        console.log(`Generating file for language: ${language}, code length: ${code.length}`);
         const response = await axios.post(`${COMPILER_BACKEND_URL}/generate-file`, {
             language,
             code
         });
+        console.log('Generate file response:', response.data);
         return response.data.filePath; // Assumes remote returns { filePath }
     } catch (err) {
+        console.error('Generate file error:', err);
         if (err.response && err.response.data) {
             throw err.response.data;
         }
@@ -1137,10 +1143,11 @@ app.post('/api/problems/code/:code/submit', async (req, res) => {
         }
         res.status(201).json({ success: true, submission, testCaseResults });
     } catch (error) {
+        console.error('Error in /api/problems/code/:code/submit:', error);
         if (error.name === 'JsonWebTokenError') {
             return res.status(401).json({ success: false, message: 'Invalid token' });
         }
-        res.status(500).json({ success: false, message: 'Error submitting solution' });
+        res.status(500).json({ success: false, message: 'Error submitting solution', error: error.message });
     }
 });
 

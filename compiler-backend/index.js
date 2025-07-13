@@ -32,12 +32,7 @@ const getExtension = (language) => {
 };
 
 app.use(cors({
-    origin: [
-        'https://algorave.me', 
-        'https://online-judge-algo-rave.vercel.app',
-        'https://online-judge-algorave-2.onrender.com', 
-        'http://localhost:3000'
-    ],
+    origin: true, // Allow all origins temporarily
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization']
@@ -115,6 +110,104 @@ app.post("/run", async (req, res) => {
         }
         console.error('Execution error:', errorMsg);
         res.status(200).json({ output: errorMsg, memoryUsed: Math.round(memoryUsed / 1024), execTime, status }); // Convert KB to MB
+    }
+});
+
+// Add the missing /generate-file endpoint
+app.post("/generate-file", async (req, res) => {
+    try {
+        const { language, code } = req.body;
+        if (!language || !code) {
+            return res.status(400).json({ success: false, error: "Language and code are required" });
+        }
+        const filePath = generateFile(language, code);
+        res.json({ success: true, filePath });
+    } catch (error) {
+        console.error('Generate file error:', error);
+        res.status(500).json({ success: false, error: error.message || "Failed to generate file" });
+    }
+});
+
+// Add the missing /execute endpoint
+app.post("/execute", async (req, res) => {
+    try {
+        const { language, filePath, input, timeLimit, memoryLimit } = req.body;
+        if (!language || !filePath) {
+            return res.status(400).json({ success: false, error: "Language and filePath are required" });
+        }
+        
+        let output;
+        let memoryUsed = 0;
+        let execTime = 0;
+        let status = 'accepted';
+        
+        switch(language) {
+            case 'cpp':
+                const cppResult = await executeCpp(filePath, input || "", timeLimit || 5000, memoryLimit || 256);
+                output = cppResult.output;
+                memoryUsed = cppResult.memoryUsed || 0;
+                execTime = cppResult.execTime || 0;
+                break;
+            case 'python':
+                const pythonResult = await executePython(filePath, input || "", timeLimit || 5000, memoryLimit || 256);
+                output = pythonResult.output;
+                memoryUsed = pythonResult.memoryUsed || 0;
+                execTime = pythonResult.execTime || 0;
+                break;
+            case 'java':
+                const javaResult = await executeJava(filePath, input || "", timeLimit || 5000, memoryLimit || 256);
+                output = javaResult.output;
+                memoryUsed = javaResult.memoryUsed || 0;
+                execTime = javaResult.execTime || 0;
+                break;
+            default:
+                throw new Error('Unsupported language');
+        }
+        
+        res.json({ 
+            success: true, 
+            output, 
+            memoryUsed: Math.round(memoryUsed / 1024), 
+            execTime, 
+            status 
+        });
+    } catch (error) {
+        let errorMsg = error;
+        let memoryUsed = 0;
+        let execTime = 0;
+        let status = 'runtime_error';
+        
+        if (typeof error === 'object') {
+            errorMsg = error.error || error.message || error.stderr || JSON.stringify(error);
+            memoryUsed = error.memoryUsed || 0;
+            execTime = error.execTime || 0;
+            status = error.status || 'runtime_error';
+        }
+        
+        // Simplify error output: replace unique filenames with generic ones
+        if (req.body.filePath) {
+            const filePath = req.body.filePath;
+            if (filePath.endsWith('.cpp')) {
+                const uniqueName = filePath.split(/[\\/]/).pop();
+                errorMsg = errorMsg.split(uniqueName).join('Main.cpp');
+            } else if (filePath.endsWith('.java')) {
+                const uniqueName = filePath.split(/[\\/]/).pop().replace('.java', '');
+                errorMsg = errorMsg.split(uniqueName).join('Main');
+                errorMsg = errorMsg.split(uniqueName + '.java').join('Main.java');
+            } else if (filePath.endsWith('.py')) {
+                const uniqueName = filePath.split(/[\\/]/).pop();
+                errorMsg = errorMsg.split(uniqueName).join('main.py');
+            }
+        }
+        
+        console.error('Execution error:', errorMsg);
+        res.status(200).json({ 
+            success: false, 
+            error: errorMsg, 
+            memoryUsed: Math.round(memoryUsed / 1024), 
+            execTime, 
+            status 
+        });
     }
 });
 
