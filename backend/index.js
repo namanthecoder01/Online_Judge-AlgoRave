@@ -35,8 +35,31 @@ const app = express();
 // const PORT = config.PORT; // Removed - using serverPort instead
 
 // CORS configuration
+const allowedOrigins = [
+    'https://algorave.me', 
+    'https://online-judge-algo-rave.vercel.app',
+    'https://online-judge-algorave-2.onrender.com', 
+    'http://localhost:3000'
+];
+
+// Add any additional origins from environment variable
+if (process.env.ADDITIONAL_CORS_ORIGINS) {
+    const additionalOrigins = process.env.ADDITIONAL_CORS_ORIGINS.split(',').map(origin => origin.trim());
+    allowedOrigins.push(...additionalOrigins);
+}
+
 app.use(cors({
-    origin: 'https://online-judge-algo-rave.vercel.app',
+    origin: function (origin, callback) {
+        // Allow requests with no origin (like mobile apps or curl requests)
+        if (!origin) return callback(null, true);
+        
+        if (allowedOrigins.indexOf(origin) !== -1) {
+            callback(null, true);
+        } else {
+            console.log('CORS blocked origin:', origin);
+            callback(new Error('Not allowed by CORS'));
+        }
+    },
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization']

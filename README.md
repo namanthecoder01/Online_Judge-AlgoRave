@@ -154,7 +154,7 @@ npm start
 
 ### 5. Access the Application
 - **Frontend**: http://localhost:3000
-- **Backend API**: http://localhost:5000
+- **Backend API**: https://algorave.me
 - **Compiler Service**: http://localhost:8000
 
 ## 🐳 Docker Management

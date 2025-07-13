@@ -756,7 +756,7 @@ class AlgoRaveAnalyzer {
         console.log('1. Start the backend server: cd backend && npm start');
         console.log('2. Start the compiler backend: cd compiler-backend && npm start');
         console.log('3. Start the frontend: cd frontend && npm start');
-        console.log('4. Access the application at: http://localhost:3000');
+        console.log('4. Access the application at: https://algorave.me');
         console.log('5. Admin login: admin@algorave.com / password123');
 
         console.log('\n' + '='.repeat(80));

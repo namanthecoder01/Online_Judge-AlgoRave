@@ -31,7 +31,17 @@ const getExtension = (language) => {
     }
 };
 
-app.use(cors());
+app.use(cors({
+    origin: [
+        'https://algorave.me', 
+        'https://online-judge-algo-rave.vercel.app',
+        'https://online-judge-algorave-2.onrender.com', 
+        'http://localhost:3000'
+    ],
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization']
+}));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
