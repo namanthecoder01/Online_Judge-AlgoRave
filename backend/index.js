@@ -8,7 +8,7 @@ import { createRequire } from "module";
 import axios from "axios";
 
 // Remote compiler-backend URL (can be set via env variable)
-const COMPILER_BACKEND_URL = process.env.COMPILER_BACKEND_URL || "https://online-judge-algorave-2.onrender.com";
+const COMPILER_BACKEND_URL = process.env.COMPILER_BACKEND_URL || "https://compiler.algorave.me";
 
 // Database and configuration imports
 import { DBConnection } from "./database/db.js";

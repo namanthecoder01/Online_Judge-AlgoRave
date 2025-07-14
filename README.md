@@ -155,7 +155,7 @@ npm start
 ### 5. Access the Application
 - **Frontend**: https://online-judge-algo-rave.vercel.app/
 - **Backend API**: https://algorave.me
-- **Compiler Service**: https://online-judge-algorave-2.onrender.com/
+- **Compiler Service**: https://compiler.algorave.me/
 
 > **Note:** These are the current deployment URLs as of the latest deployment. Update if your deployment changes.
 

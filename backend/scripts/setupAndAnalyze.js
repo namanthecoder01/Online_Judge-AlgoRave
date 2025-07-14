@@ -199,6 +199,7 @@ class AlgoRaveAnalyzer {
             await this.createSampleContests();
             await this.createSampleSubmissions();
             await this.createSampleContestResults();
+            await this.createTestCases();
             await this.initializeLeaderboards();
             await this.updateProblemSchema();
 
@@ -271,6 +272,20 @@ class AlgoRaveAnalyzer {
                 problemsSolved: 100,
                 problemsByTag: new Map([['easy', 30], ['medium', 40], ['hard', 30]]),
                 isAdmin: true
+            },
+            {
+                username: 'emma_solver',
+                firstname: 'Emma',
+                lastname: 'Davis',
+                email: 'emma@example.com',
+                password: hashedPassword,
+                bio: 'Data structures and algorithms expert',
+                college: 'CMU',
+                country: 'Germany',
+                preferredLanguages: ['cpp', 'python', 'java'],
+                badge: 'Code Novice',
+                problemsSolved: 15,
+                problemsByTag: new Map([['easy', 8], ['medium', 5], ['hard', 2]])
             }
         ];
 
@@ -317,6 +332,11 @@ class AlgoRaveAnalyzer {
                         input: '[2,7,11,15]\n9',
                         output: '[0,1]',
                         explanation: 'Because nums[0] + nums[1] == 9, we return [0, 1].'
+                    },
+                    {
+                        input: '[3,2,4]\n6',
+                        output: '[1,2]',
+                        explanation: 'Because nums[1] + nums[2] == 6, we return [1, 2].'
                     }
                 ],
                 isPublished: true
@@ -338,7 +358,12 @@ class AlgoRaveAnalyzer {
                     {
                         input: '()',
                         output: 'true',
-                        explanation: 'The string contains valid parentheses.'
+                        explanation: 'Simple valid parentheses: ()'
+                    },
+                    {
+                        input: '()[]{}',
+                        output: 'true',
+                        explanation: 'Multiple valid parentheses: ()[]{}, all properly closed'
                     }
                 ],
                 isPublished: true
@@ -361,6 +386,11 @@ class AlgoRaveAnalyzer {
                         input: '[1,null,2,3]',
                         output: '[1,3,2]',
                         explanation: 'Inorder traversal visits nodes in left-root-right order.'
+                    },
+                    {
+                        input: '[1,2,3,4,5]',
+                        output: '[4,2,5,1,3]',
+                        explanation: 'Inorder traversal of a complete binary tree.'
                     }
                 ],
                 isPublished: true
@@ -382,7 +412,12 @@ class AlgoRaveAnalyzer {
                     {
                         input: '"babad"',
                         output: '"bab"',
-                        explanation: '"aba" is also a valid answer.'
+                        explanation: 'The longest palindromic substring is "bab" (length 3).'
+                    },
+                    {
+                        input: '"cbbd"',
+                        output: '"bb"',
+                        explanation: 'The longest palindromic substring is "bb" (length 2).'
                     }
                 ],
                 isPublished: true
@@ -405,6 +440,146 @@ class AlgoRaveAnalyzer {
                         input: '[[1,4,5],[1,3,4],[2,6]]',
                         output: '[1,1,2,3,4,4,5,6]',
                         explanation: 'Merging the three sorted lists.'
+                    },
+                    {
+                        input: '[[1,3,5],[2,4,6]]',
+                        output: '[1,2,3,4,5,6]',
+                        explanation: 'Merging two sorted lists.'
+                    }
+                ],
+                isPublished: true
+            },
+            {
+                name: 'Reverse Integer',
+                statement: 'Given a signed 32-bit integer x, return x with its digits reversed. If reversing x causes the value to go outside the signed 32-bit integer range [-231, 231 - 1], then return 0.',
+                code: 'REVINT',
+                difficulty: 'easy',
+                tags: ['math'],
+                timeLimit: 1000,
+                memoryLimit: 64,
+                createdBy: users[3]._id,
+                inputFormat: 'The first line contains an integer x.',
+                outputFormat: 'Print the reversed integer.',
+                constraints: '• -231 ≤ x ≤ 231 - 1',
+                editorial: '**Solution Approach:**\n\nWe can reverse the digits by repeatedly extracting the last digit and building the reversed number.\n\n**Algorithm:**\n1. Initialize result as 0\n2. While x is not 0:\n   - Extract last digit: digit = x % 10\n   - Update result: result = result * 10 + digit\n   - Remove last digit: x = x / 10\n3. Check for overflow and return appropriate value\n\n**Time Complexity:** O(log n) - we process each digit once\n**Space Complexity:** O(1) - we use constant extra space\n\n**Key Insight:** Handle overflow carefully by checking bounds before updating the result.',
+                samples: [
+                    {
+                        input: '123',
+                        output: '321',
+                        explanation: 'Reversing 123 gives 321.'
+                    },
+                    {
+                        input: '-123',
+                        output: '-321',
+                        explanation: 'Reversing -123 gives -321 (negative numbers).'
+                    }
+                ],
+                isPublished: true
+            },
+            {
+                name: 'Container With Most Water',
+                statement: 'Given n non-negative integers height where each represents a point at coordinate (i, height[i]), find two lines that together with the x-axis form a container that would hold the maximum amount of water.',
+                code: 'CONTAINER',
+                difficulty: 'medium',
+                tags: ['array', 'two-pointers'],
+                timeLimit: 1000,
+                memoryLimit: 64,
+                createdBy: users[3]._id,
+                inputFormat: 'The first line contains an integer n (2 ≤ n ≤ 105), the number of heights.\nThe second line contains n space-separated integers height[i] (0 ≤ height[i] ≤ 104).',
+                outputFormat: 'Print the maximum area of water that can be contained.',
+                constraints: '• n == height.length\n• 2 ≤ n ≤ 105\n• 0 ≤ height[i] ≤ 104',
+                editorial: '**Solution Approach:**\n\nThis problem can be solved using the two-pointer technique.\n\n**Algorithm:**\n1. Use two pointers, left and right, starting from both ends\n2. Calculate area: min(height[left], height[right]) * (right - left)\n3. Move the pointer with smaller height inward\n4. Keep track of maximum area found\n\n**Time Complexity:** O(n) - we traverse the array once\n**Space Complexity:** O(1) - we use constant extra space\n\n**Key Insight:** Moving the pointer with smaller height is optimal because the width will decrease, so we need to try to increase the height.',
+                samples: [
+                    {
+                        input: '[1,8,6,2,5,4,8,3,7]',
+                        output: '49',
+                        explanation: 'Maximum area = min(8,7) * (8-1) = 7 * 7 = 49'
+                    },
+                    {
+                        input: '[1,1]',
+                        output: '1',
+                        explanation: 'Maximum area = min(1,1) * (1-0) = 1 * 1 = 1'
+                    }
+                ],
+                isPublished: true
+            },
+            {
+                name: 'Regular Expression Matching',
+                statement: 'Given an input string s and a pattern p, implement regular expression matching with support for \'.\' and \'*\'.',
+                code: 'REGEX',
+                difficulty: 'hard',
+                tags: ['string', 'dynamic-programming'],
+                timeLimit: 1000,
+                memoryLimit: 64,
+                createdBy: users[4]._id,
+                inputFormat: 'The first line contains a string s.\nThe second line contains a pattern p.',
+                outputFormat: 'Print "true" if s matches p, "false" otherwise.',
+                constraints: '• 1 ≤ s.length ≤ 20\n• 1 ≤ p.length ≤ 30\n• s contains only lowercase English letters\n• p contains only lowercase English letters, \'.\', and \'*\'',
+                editorial: '**Solution Approach:**\n\nThis problem can be solved using dynamic programming.\n\n**Algorithm:**\n1. Create a 2D DP table where dp[i][j] represents if s[0...i-1] matches p[0...j-1]\n2. Base cases:\n   - Empty string matches empty pattern\n   - Empty string matches pattern with only \'*\' characters\n3. For each character:\n   - If characters match or pattern has \'.\', check previous state\n   - If pattern has \'*\', check zero or more occurrences\n\n**Time Complexity:** O(mn) where m and n are lengths of s and p\n**Space Complexity:** O(mn) for the DP table\n\n**Key Insight:** The \'*\' character can match zero or more of the preceding element.',
+                samples: [
+                    {
+                        input: '"aa"\n"a"',
+                        output: 'false',
+                        explanation: 'Pattern "a" only matches one character, not the entire string "aa"'
+                    },
+                    {
+                        input: '"aa"\n"a*"',
+                        output: 'true',
+                        explanation: 'Pattern "a*" matches zero or more \'a\'s, so it matches "aa"'
+                    }
+                ],
+                isPublished: true
+            },
+            {
+                name: 'Add Two Numbers',
+                statement: 'You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order, and each of their nodes contains a single digit. Add the two numbers and return the sum as a linked list.',
+                code: 'ADDTWO',
+                difficulty: 'medium',
+                tags: ['linked-list', 'math'],
+                timeLimit: 1000,
+                memoryLimit: 64,
+                createdBy: users[4]._id,
+                inputFormat: 'The first line contains two space-separated integers representing the first number.\nThe second line contains two space-separated integers representing the second number.',
+                outputFormat: 'Print the sum as space-separated integers in reverse order.',
+                constraints: '• The number of nodes in each linked list is in the range [1, 100].\n• 0 ≤ Node.val ≤ 9\n• It is guaranteed that the list represents a number that does not have leading zeros.',
+                editorial: '**Solution Approach:**\n\nWe can add the numbers digit by digit, keeping track of the carry.\n\n**Algorithm:**\n1. Initialize a dummy head for the result list\n2. Traverse both lists simultaneously\n3. Add corresponding digits and carry from previous addition\n4. Create new node with sum % 10 and update carry = sum / 10\n5. Handle remaining digits and final carry\n\n**Time Complexity:** O(max(m, n)) where m and n are lengths of the lists\n**Space Complexity:** O(max(m, n)) for the result list\n\n**Key Insight:** The reverse order makes it easier to add from least significant digit to most significant digit.',
+                samples: [
+                    {
+                        input: '[2,4,3]\n[5,6,4]',
+                        output: '[7,0,8]',
+                        explanation: '342 + 465 = 807, represented as [7,0,8]'
+                    },
+                    {
+                        input: '[0]\n[0]',
+                        output: '[0]',
+                        explanation: '0 + 0 = 0, represented as [0]'
+                    }
+                ],
+                isPublished: true
+            },
+            {
+                name: 'Median of Two Sorted Arrays',
+                statement: 'Given two sorted arrays nums1 and nums2 of size m and n respectively, return the median of the two sorted arrays.',
+                code: 'MEDIAN',
+                difficulty: 'hard',
+                tags: ['array', 'binary-search'],
+                timeLimit: 1000,
+                memoryLimit: 64,
+                createdBy: users[0]._id,
+                inputFormat: 'The first line contains two space-separated integers m and n.\nThe second line contains m space-separated integers representing nums1.\nThe third line contains n space-separated integers representing nums2.',
+                outputFormat: 'Print the median of the two sorted arrays.',
+                constraints: '• nums1.length == m\n• nums2.length == n\n• 0 ≤ m ≤ 1000\n• 0 ≤ n ≤ 1000\n• 1 ≤ m + n ≤ 2000\n• -106 ≤ nums1[i], nums2[i] ≤ 106',
+                editorial: '**Solution Approach:**\n\nThis problem can be solved using binary search to find the correct partition.\n\n**Algorithm:**\n1. Ensure nums1 is the smaller array\n2. Use binary search on the smaller array to find the correct partition\n3. Calculate the partition for the larger array\n4. Check if the partition is correct by comparing elements around the partition\n5. Calculate median based on the partition\n\n**Time Complexity:** O(log(min(m, n)))\n**Space Complexity:** O(1)\n\n**Key Insight:** The median divides the combined array into two equal halves, and we can find this partition using binary search.',
+                samples: [
+                    {
+                        input: '[1,3]\n[2]',
+                        output: '2.0',
+                        explanation: 'Merged array: [1,2,3], median = 2.0'
+                    },
+                    {
+                        input: '[1,2]\n[3,4]',
+                        output: '2.5',
+                        explanation: 'Merged array: [1,2,3,4], median = (2+3)/2 = 2.5'
                     }
                 ],
                 isPublished: true
@@ -461,6 +636,19 @@ class AlgoRaveAnalyzer {
                 createdBy: users[1]._id,
                 status: 'past',
                 participants: 4
+            },
+            {
+                title: 'Beginner Friendly Contest',
+                description: 'Perfect for newcomers to competitive programming.',
+                startTime: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000), // 3 days from now
+                durationMinutes: 90,
+                difficulty: 'easy',
+                type: 'practice',
+                prizes: ['$50', '$25', '$10'],
+                problems: [problems[0]._id, problems[1]._id, problems[5]._id, problems[6]._id],
+                createdBy: users[2]._id,
+                status: 'upcoming',
+                participants: 0
             }
         ];
 
@@ -559,6 +747,177 @@ class AlgoRaveAnalyzer {
 
         await ContestResult.insertMany(contestResults);
         console.log(`✅ Created ${contestResults.length} contest results`);
+    }
+
+    async createTestCases() {
+        console.log('🧪 Creating test cases...');
+        
+        const problems = await Problem.find();
+        
+        const testCases = [
+            // Two Sum (TWOSUM) - 2 additional test cases
+            {
+                problem: problems[0]._id,
+                input: '[1,2,3,4,5]\n9',
+                output: '[3,4]',
+                isSample: false,
+                index: 1
+            },
+            {
+                problem: problems[0]._id,
+                input: '[0,4,3,0]\n0',
+                output: '[0,3]',
+                isSample: false,
+                index: 2
+            },
+            
+            // Valid Parentheses (PAREN) - 2 additional test cases
+            {
+                problem: problems[1]._id,
+                input: '(]',
+                output: 'false',
+                isSample: false,
+                index: 1
+            },
+            {
+                problem: problems[1]._id,
+                input: '([)]',
+                output: 'false',
+                isSample: false,
+                index: 2
+            },
+            
+            // Binary Tree Inorder Traversal (BTINORDER) - 2 additional test cases
+            {
+                problem: problems[2]._id,
+                input: '[1,2,3,4,5,6,7]',
+                output: '[4,2,5,1,6,3,7]',
+                isSample: false,
+                index: 1
+            },
+            {
+                problem: problems[2]._id,
+                input: '[1]',
+                output: '[1]',
+                isSample: false,
+                index: 2
+            },
+            
+            // Longest Palindromic Substring (LONGPAL) - 2 additional test cases
+            {
+                problem: problems[3]._id,
+                input: '"racecar"',
+                output: '"racecar"',
+                isSample: false,
+                index: 1
+            },
+            {
+                problem: problems[3]._id,
+                input: '"abba"',
+                output: '"abba"',
+                isSample: false,
+                index: 2
+            },
+            
+            // Merge k Sorted Lists (MERGEK) - 2 additional test cases
+            {
+                problem: problems[4]._id,
+                input: '[[1,2,3],[4,5,6],[7,8,9]]',
+                output: '[1,2,3,4,5,6,7,8,9]',
+                isSample: false,
+                index: 1
+            },
+            {
+                problem: problems[4]._id,
+                input: '[[1],[2],[3]]',
+                output: '[1,2,3]',
+                isSample: false,
+                index: 2
+            },
+            
+            // Reverse Integer (REVINT) - 2 additional test cases
+            {
+                problem: problems[5]._id,
+                input: '120',
+                output: '21',
+                isSample: false,
+                index: 1
+            },
+            {
+                problem: problems[5]._id,
+                input: '-2147483648',
+                output: '0',
+                isSample: false,
+                index: 2
+            },
+            
+            // Container With Most Water (CONTAINER) - 2 additional test cases
+            {
+                problem: problems[6]._id,
+                input: '[4,3,2,1,4]',
+                output: '16',
+                isSample: false,
+                index: 1
+            },
+            {
+                problem: problems[6]._id,
+                input: '[3,1,2,4,5]',
+                output: '12',
+                isSample: false,
+                index: 2
+            },
+            
+            // Regular Expression Matching (REGEX) - 2 additional test cases
+            {
+                problem: problems[7]._id,
+                input: '"ab"\n".*"',
+                output: 'true',
+                isSample: false,
+                index: 1
+            },
+            {
+                problem: problems[7]._id,
+                input: '"aab"\n"c*a*b"',
+                output: 'true',
+                isSample: false,
+                index: 2
+            },
+            
+            // Add Two Numbers (ADDTWO) - 2 additional test cases
+            {
+                problem: problems[8]._id,
+                input: '[9,9,9,9,9,9,9]\n[9,9,9,9]',
+                output: '[8,9,9,9,0,0,0,1]',
+                isSample: false,
+                index: 1
+            },
+            {
+                problem: problems[8]._id,
+                input: '[1,2,3]\n[4,5,6]',
+                output: '[5,7,9]',
+                isSample: false,
+                index: 2
+            },
+            
+            // Median of Two Sorted Arrays (MEDIAN) - 2 additional test cases
+            {
+                problem: problems[9]._id,
+                input: '[1,2]\n[3,4]',
+                output: '2.5',
+                isSample: false,
+                index: 1
+            },
+            {
+                problem: problems[9]._id,
+                input: '[1,3,5]\n[2,4,6]',
+                output: '3.5',
+                isSample: false,
+                index: 2
+            }
+        ];
+
+        await TestCase.insertMany(testCases);
+        console.log(`✅ Created ${testCases.length} additional test cases`);
     }
 
     async initializeLeaderboards() {
