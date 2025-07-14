@@ -5,7 +5,7 @@ FROM node:24-alpine
 WORKDIR /app
 
 # Install system dependencies
-RUN apk update && apk add --no-cache g++ python3 openjdk17-jdk bash
+RUN apk update && apk add --no-cache g++ python3 openjdk17-jdk bash time
 
 # Copy package files and install dependencies
 COPY package*.json ./
