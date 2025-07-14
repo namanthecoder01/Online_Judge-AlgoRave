@@ -153,7 +153,7 @@ npm start
 ```
 
 ### 5. Access the Application
-- **Frontend**: https://online-judge-algo-rave.vercel.app/
+- **Frontend**: https://oj.algorave.me/
 - **Backend API**: https://algorave.me
 - **Compiler Service**: https://compiler.algorave.me/
 
